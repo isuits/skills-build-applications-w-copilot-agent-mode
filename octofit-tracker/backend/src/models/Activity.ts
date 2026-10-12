@@ -1,4 +1,4 @@
-import { Document, Schema, Types, model } from 'mongoose';
+import { Document, Model, Schema, Types, model } from 'mongoose';
 
 export type ActivityType =
   | 'running'
@@ -17,7 +17,7 @@ export interface IActivity extends Document {
   date: Date;
 }
 
-const activitySchema = new Schema<IActivity>({
+const activitySchema: Schema<IActivity> = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   type: {
     type: String,
@@ -29,4 +29,6 @@ const activitySchema = new Schema<IActivity>({
   date: { type: Date, default: Date.now },
 });
 
-export default model<IActivity>('Activity', activitySchema);
+const Activity = model('Activity', activitySchema) as Model<IActivity>;
+
+export default Activity;

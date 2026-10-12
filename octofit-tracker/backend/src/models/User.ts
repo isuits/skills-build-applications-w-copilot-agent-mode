@@ -1,4 +1,4 @@
-import { Document, Schema, Types, model } from 'mongoose';
+import { Document, Model, Schema, Types, model } from 'mongoose';
 
 export interface IUser extends Document {
   name: string;
@@ -8,7 +8,7 @@ export interface IUser extends Document {
   createdAt: Date;
 }
 
-const userSchema = new Schema<IUser>(
+const userSchema: Schema<IUser> = new Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -18,4 +18,6 @@ const userSchema = new Schema<IUser>(
   { timestamps: { createdAt: true, updatedAt: false } },
 );
 
-export default model<IUser>('User', userSchema);
+const User = model('User', userSchema) as Model<IUser>;
+
+export default User;

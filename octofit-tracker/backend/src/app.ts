@@ -20,6 +20,6 @@ app.get('/api', (_req: Request, res: Response) => {
   });
 });
 
-app.use('/api', apiRouter);
+app.use(apiRouter);
 
 export default app;

@@ -7,10 +7,10 @@ import workoutsRouter from './workouts';
 
 const router = Router();
 
-router.use('/users', usersRouter);
-router.use('/teams', teamsRouter);
-router.use('/activities', activitiesRouter);
-router.use('/leaderboard', leaderboardRouter);
-router.use('/workouts', workoutsRouter);
+router.use('/api/users', usersRouter);
+router.use('/api/teams', teamsRouter);
+router.use('/api/activities', activitiesRouter);
+router.use('/api/leaderboard', leaderboardRouter);
+router.use('/api/workouts', workoutsRouter);
 
 export default router;

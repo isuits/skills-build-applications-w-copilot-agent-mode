@@ -1,4 +1,4 @@
-import { Document, Schema, model } from 'mongoose';
+import { Document, Model, Schema, model } from 'mongoose';
 
 export type WorkoutDifficulty = 'beginner' | 'intermediate' | 'advanced';
 
@@ -10,7 +10,7 @@ export interface IWorkout extends Document {
   exercises: string[];
 }
 
-const workoutSchema = new Schema<IWorkout>({
+const workoutSchema: Schema<IWorkout> = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   difficulty: {
@@ -22,4 +22,6 @@ const workoutSchema = new Schema<IWorkout>({
   exercises: [{ type: String }],
 });
 
-export default model<IWorkout>('Workout', workoutSchema);
+const Workout = model('Workout', workoutSchema) as Model<IWorkout>;
+
+export default Workout;
